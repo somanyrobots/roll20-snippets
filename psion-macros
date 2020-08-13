@@ -1,4 +1,15 @@
-TK Force
+# A collection of macros to make it easier to play a Psion using roll20's
+# 5E OGL character sheet.
+# These do not require any API scripts to operate, unless specifically mentioned.
+# Psion by KibblesTasty (https://www.kthomebrew.com/)
+# USAGE
+# Grab the macro/ability you want, add it to your character sheet as a custom
+# ability, and you're done.
+# If you're using ChatSetAttr to enable automatic psi point and rampage die tracking,
+# you'll want to add a rampage_die_size attribute, and make sure your psi points
+# are being tracked as your class_resource.
+
+## Telekinetic Force
 @{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telekinetic Force}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4})]]d10  + 5[INT]]]}} {{dmg1type=Bludgeoning}}
@@ -6,11 +17,13 @@ TK Force
 {{desc=?{Sweeping (3)?|No,Target is|Yes,**Sweeping:** All creatures in a 10' sphere are} shoved [[5+?{Hurling (1-3)|0|1|2|3}*10]] feet or knocked prone. ?{Crushing (2)|No,|Yes,&#x00A;**Crushing:** The target is restrained until the end of its next turn.}}}
 @{charname_output}
 
-TK Weapons
+## Telekinetic Weapons
+# Features a built-in option for Psionic Weapons, if you're commonly
+# using them together; you can just delete those four lines if you're not
 @{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telekinetic Weapon}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=@{spell_attack_bonus}}}
 {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}}
-{{dmg1flag=1}} {{dmg1=[[?{Damage Dice}  + 5[INT]]]}} {{dmg1type=?{Damage Type|Slashing|Piercing|Bludgeoning}}} 
+{{dmg1flag=1}} {{dmg1=[[?{Damage Dice} + 5[INT]]]}} {{dmg1type=?{Damage Type|Slashing|Piercing|Bludgeoning}}}
 {{crit1=1}} {{crit1=[[?{Damage Dice}[CRIT]]]}}
 ?{Psionic Weapon|No, |Yes,
 {{dmg2flag=1&#125;&#125; {{dmg2=[[[[(ceil((@{level} + 2) / 6))]]d6]]&#125;&#125; {{dmg2type=Psionic Weapon&#125;&#125;
@@ -18,7 +31,7 @@ TK Weapons
 }
 @{charname_output}
 
-TP Intrusion
+## Telepathic Intrusion
 @{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{intelligence_mod}[INT]]]}} {{dmg1type=Psychic}}
@@ -26,31 +39,25 @@ TP Intrusion
 {{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}}
 @{charname_output}
 
-Psionic Weapons
+## Psionic Weapons
 &{template:dmg} {{charname=@{charname_output}}}
 {{rname=Psionic Weapon}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(ceil((@{level} + 2) / 6))]]d6]]}} {{dmg1type=Psychic}}
 @{charname_output}
 
 Rampage (with no die management)
-&{template:dmg} {{charname=@{charname_output}}} {{rname=Rampage (?{Rampage Die|d4|d6|d8|d10|d12})}} {{damage=1}} {{dmg1flag=1}} {{dmg1=[[1?{Rampage Die|d4|d6|d8|d10|d12}]]}} @{charname_output}
+&{template:dmg} {{charname=@{charname_output}}}
+{{damage=1}} {{dmg1flag=1}} {{rname=Rampage (?{Rampage Die|d4|d6|d8|d10|d12})}}
+{{dmg1=[[1?{Rampage Die|d4|d6|d8|d10|d12}]]}}
+@{charname_output}
 
-Rampage (with ChatSetAttr for automatic die management)
+Rampage (requires ChatSetAttr for automatic die management)
 &{template:dmg} {{charname=@{charname_output}}}
 {{rname=Rampage}} {{damage=1}} {{dmg1flag=1}} {{dmg2flag=1}}
 {{dmg1=[[1d@{rampage_die_size}]]}} {{dmg1type=Damage}}
 {{dmg2=1d[[{@{rampage_die_size}+2,12}kl1]]}} {{dmg2type=Next Rampage}}
 !setattr --silent --charid @{character_id} --rampage_die_size|[[{@{rampage_die_size}+2,12}kl1]]|12 !!!
 @{charname_output}
-
-
-Rampage
-&{template:dmg} {{charname=@{charname_output}}} {{rname=Rampage}}
-{{damage=1}} {{dmg1flag=1}}
-{{dmg1=[[1d@{rampage_die_size}]]}}
-#Increase-Rampage @{charname_output} &{template:dmg} {{charname=@{charname_output}}} {{rname=Rampage}} {{damage=1}} {{dmg1flag=1}} {{dmg2flag=1}} {{dmg1=[[1d@{rampage_die_size}]]}} {{dmg1type=Damage}} {{dmg2=1d[[{@{rampage_die_size}+2,12}kl1]]}} {{dmg2type=Next Rampage}} !setattr --silent --charid @{character_id} --rampage_die_size|[[{@{rampage_die_size}+2,12}kl1]]|12 !!! @{charname_output}
-
-
 
 
 CK Blast
