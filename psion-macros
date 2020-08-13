@@ -36,6 +36,13 @@
 
 ## Telepathic Intrusion
 @{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
+{{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} 
+{{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{intelligence_mod}[INT]]]}} {{dmg1type=Psychic}}
+{{save=1}} {{saveattr=Wisdom}} {{savedesc=Half damage and no effects}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}}
+{{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}}
+@{charname_output}
+
+@{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{intelligence_mod}[INT]]]}} {{dmg1type=Psychic}}
 {{save=1}} {{saveattr=Wisdom}} {{savedesc=Half damage and no effects}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}}
