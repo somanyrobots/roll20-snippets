@@ -18,8 +18,11 @@
 @{charname_output}
 
 ## Telekinetic Weapons
-# Features a built-in option for Psionic Weapons, if you're commonly
-# using them together; you can just delete those four lines if you're not
+# Features a built-in option if you've previously activated Psionic Weapons, if you're
+# using them together; you can just delete those four lines if you're not.
+# As with Eldritch Blast, if you're flinging multiple weapons, you're going to
+# want to just hit this button multiple times. It'd be even harder than EB to
+# script up multiple flings, since the damage dice can vary between attacks.
 @{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telekinetic Weapon}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=@{spell_attack_bonus}}}
 {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}}
@@ -36,7 +39,7 @@
 {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{intelligence_mod}[INT]]]}} {{dmg1type=Psychic}}
 {{save=1}} {{saveattr=Wisdom}} {{savedesc=Half damage and no effects}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}}
-{{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}}
+{{desc=The target has disadvantage on attacks against you until the start of your next turn.?{Double (3)|No, |Yes,&#x00A;**Double (3):** You may target two creatures.} ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is blinded until the end of its next turn&period;}}}
 @{charname_output}
 
 ## Psionic Weapons
