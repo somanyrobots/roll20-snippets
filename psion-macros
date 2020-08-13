@@ -8,6 +8,14 @@
 # If you're using ChatSetAttr to enable automatic psi point and rampage die tracking,
 # you'll want to add a rampage_die_size attribute, and make sure your psi points
 # are being tracked as your class_resource.
+#
+# STUFF YOU MIGHT CHANGE
+# Telekinetic Weapons: I commonly use it paired with Psionic Weapon, you can either
+# ignore the roll query or delete it.
+# Potent Psionics: I'm not sure how to dynamically check for the existence of potent Psionics
+# (roll20's surprisingly bad at booleans), so right now it's hard-coded in. Edit the
+# `savedesc` segments if you don't have that ability.
+
 
 ## Telekinetic Force
 @{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
@@ -51,7 +59,7 @@
 @{charname_output}
 
 ## Rampage (with no die management)
-# Just rolls your rampage damage die
+# Just rolls your rampage damage die, it's up to you to track the die
 &{template:dmg} {{charname=@{charname_output}}}
 {{damage=1}} {{dmg1flag=1}} {{rname=Rampage (?{Rampage Die|d4|d6|d8|d10|d12})}}
 {{dmg1=[[1?{Rampage Die|d4|d6|d8|d10|d12}]]}}
