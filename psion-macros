@@ -42,20 +42,16 @@
 {{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}}
 @{charname_output}
 
-@{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
-{{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
-{{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{intelligence_mod}[INT]]]}} {{dmg1type=Psychic}}
-{{save=1}} {{saveattr=Wisdom}} {{savedesc=Half damage and no effects}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}}
-{{desc=The target has disadvantage on attacks against you until the start of your next turn.?{Double (3)|No, |Yes,&#x00A;**Double (3):** You may target two creatures.} ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is blinded until the end of its next turn&period;}}}
-@{charname_output}
-
 ## Psionic Weapons
+# I mostly use it through the built-in option on TK Weapons, but this
+# will quickly roll damage for you otherwise
 &{template:dmg} {{charname=@{charname_output}}}
 {{rname=Psionic Weapon}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(ceil((@{level} + 2) / 6))]]d6]]}} {{dmg1type=Psychic}}
 @{charname_output}
 
-Rampage (with no die management)
+## Rampage (with no die management)
+# Just rolls your rampage damage die
 &{template:dmg} {{charname=@{charname_output}}}
 {{damage=1}} {{dmg1flag=1}} {{rname=Rampage (?{Rampage Die|d4|d6|d8|d10|d12})}}
 {{dmg1=[[1?{Rampage Die|d4|d6|d8|d10|d12}]]}}
@@ -69,7 +65,9 @@ Rampage (requires ChatSetAttr for automatic die management)
 !setattr --silent --charid @{character_id} --rampage_die_size|[[{@{rampage_die_size}+2,12}kl1]]|12 !!!
 @{charname_output}
 
-
+###
+### The blasts are WIP
+###
 CK Blast
 @{Zariyah|wtype}&{template:atkdmg} {{charname=Zariyah}} {{rname=Cryokinetic Blast}}
 {{always=1}} {{damage=1}} {{attack=1}}
