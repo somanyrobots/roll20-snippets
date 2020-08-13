@@ -12,13 +12,14 @@
 # STUFF YOU MIGHT CHANGE
 # Telekinetic Weapons: I commonly use it paired with Psionic Weapon, you can either
 # ignore the roll query or delete it.
-# Potent Psionics: I'm not sure how to dynamically check for the existence of potent Psionics
-# (roll20's surprisingly bad at booleans), so right now it's hard-coded in. Edit the
+# Empowered Psionics: I'm not sure how to dynamically check for the existence of an attribute
+# roll20's surprisingly bad at booleans), so it's currently hard-coded ON. Shouldn't be too
+# hard to take it out if it doesn't apply.
+# Potent Psionics: Same as with Empowered Psionics. Edit the
 # `savedesc` segments if you don't have that ability.
 
-
 ## Telekinetic Force
-@{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telekinetic Force}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4})]]d10  + 5[INT]]]}} {{dmg1type=Bludgeoning}}
 {{save=1}} {{saveattr=Strength}} {{savedesc=Half damage and no effects}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}}
@@ -43,7 +44,7 @@
 @{charname_output}
 
 ## Telepathic Intrusion
-@{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{intelligence_mod}[INT]]]}} {{dmg1type=Psychic}}
 {{save=1}} {{saveattr=Wisdom}} {{savedesc=Half damage and no effects}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}}
