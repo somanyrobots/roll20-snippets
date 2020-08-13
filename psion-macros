@@ -32,7 +32,7 @@
 # As with Eldritch Blast, if you're flinging multiple weapons, you're going to
 # want to just hit this button multiple times. It'd be even harder than EB to
 # script up multiple flings, since the damage dice can vary between attacks.
-@{wtype}&{template:atkdmg} {{charname=@{charname_output}}}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}}
 {{rname=Telekinetic Weapon}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=@{spell_attack_bonus}}}
 {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}}
 {{dmg1flag=1}} {{dmg1=[[?{Damage Dice} + 5[INT]]]}} {{dmg1type=?{Damage Type|Slashing|Piercing|Bludgeoning}}}
