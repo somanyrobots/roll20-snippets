@@ -14,7 +14,7 @@
 {{rname=Telekinetic Force}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}}
 {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4})]]d10  + 5[INT]]]}} {{dmg1type=Bludgeoning}}
 {{save=1}} {{saveattr=Strength}} {{savedesc=Half damage and no effects}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}}
-{{desc=?{Sweeping (3)?|No,Target is|Yes,**Sweeping:** All creatures in a 10' sphere are} shoved [[5+?{Hurling (1-3)|0|1|2|3}*10]] feet or knocked prone. ?{Crushing (2)|No,|Yes,&#x00A;**Crushing:** The target is restrained until the end of its next turn.}}}
+{{desc=?{Zone of (0-3)?|0,Target is|1, All creatures in a **5'** sphere are|2, All creatures in a **10'** sphere are|3, All creatures in a **20'** sphere are} shoved [[5+?{Hurling (1-3)|0|1|2|3}*10]] feet or knocked prone. ?{Crushing (2)|No,|Yes,&#x00A;**Crushing:** The target is restrained until the end of its next turn.}}}
 @{charname_output}
 
 ## Telekinetic Weapons
