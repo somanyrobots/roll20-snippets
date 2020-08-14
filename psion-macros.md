@@ -31,7 +31,7 @@ Make sure you've got `empowered_psionics_bonus` and `psionic_power_save_desc` at
 ## Kinetic Slam
 This is just Telekinetic Force, with the Kinetic Slam talent to turn it into an attack roll instead of a save.
 
-Make sure you've got `empowered_psionics_bonus` and `psionic_power_save_desc` attributes set - see instructions above.
+Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
 @{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Kinetic Slam}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{crit=1}} {{crit1=[[[[1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} @{charname_output}
 ```
@@ -48,6 +48,14 @@ Make sure you've got the `empowered_psionics_bonus` attribute set - see instruct
 Make sure you've got `empowered_psionics_bonus` and `psionic_power_save_desc` attributes set - see instructions above.
 ```
 @{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{save=1}} {{saveattr=Wisdom}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}} @{charname_output}
+```
+
+## Mind Thrust
+This is just Telepathic Intrusion, with the Mind Thrust talent to turn it into an attack roll instead of a save.
+
+Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
+```
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Mind Thrust}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{crit=1}} {{crit1=[[[[1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} @{charname_output}
 ```
 
 ## Enhancing Surge
