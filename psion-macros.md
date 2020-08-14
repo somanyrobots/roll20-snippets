@@ -5,16 +5,20 @@ This Psion class is by [KibblesTasty](https://www.kthomebrew.com/) and is availa
 
 # USAGE
 1. Grab the ability you want and add it to your character sheet as a custom ability.
-2. Set the following attributes on the character sheet:
+2. Set the following attributes on the character sheet (they'll all scale, so you can leave them alone unless you take a talent that modifies them):
 * `psionic_power_save_desc`: This should be `No damage or effects.` If you have Potent Psionics, instead enter `Half damage and no effects.` You'll need this for any ability with a saving throw (though the math will still be fine - it's just for descriptions).
 * `empowered_psionics_bonus`: This should be `0`. If you have Empowered Psionics, instead enter `@{intelligence_mod}`. You'll need this one for most abilities.
 * `perfected_enhancement_bonus`: This should be `0`. If you have Perfected Enhancement, instead enter `floor(@{intelligence_mod}/2)`. You only need this one for Enhancing Surge.
 
 # LIMITATIONS
-There's no way to edit attributes without API access, so these abilities won't directly modify any attributes on your character. Also, there's no way to dynamically switch between attack rolls and saving throws, so for powers that do so, you'll need a separate macro for each mode. Also, it really sucks that roll20 demands these be one-line snippets; if you edit them, I suggest adding line breaks every 3-4 items.
+* There's no way to edit attributes without API access, so these abilities won't directly modify any attributes on your character.
+* There's no way to dynamically switch between attack rolls and saving throws, so for powers that do so, you'll need a separate macro for each mode.
+* It really sucks that roll20 demands these be one-line snippets; if you edit them, I suggest adding line breaks every 3-4 items.
+* I haven't found any way to include one's Psi Limit as part of the macros. So right now I've just got the roll queries set to match my own 8th-level PC - ideally, on all the 1+ queries, we'd cap them at the psi limit. I'll probably change the defaults to scale 0-10, to accomodate 20th-level psions, since it doesn't actually hurt a lower-level PC much.
+* It's probably impossible to teach roll20 to actually enforce a psi limit within a turn, or even within a macro (it could be maybe done with API access, but I'm trying not to require that). This isn't that hard for people to track themselves, and teaching roll20 how to sum different values across the roll queries will be a giant pain, if it's possible at all.
 
 # SHOW ME THE DANG MACROS ALREADY
-These all use the OGL sheet's default roll templates, to try and keep as consistent an appearance as possible.
+These all use the OGL sheet's default roll templates, to try and keep as consistent an appearance as possible. Again, they rely on a few custom attributes you'll need to set, if you skipped 'USAGE' above.
 
 ## Telekinetic Force
 ```
