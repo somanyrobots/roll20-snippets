@@ -42,6 +42,7 @@ Features a built-in option if you've previously activated Psionic Weapons, if yo
 ```
 
 ## Enhancing Surge
+For now, I've got this just outputting what the bonus damage is (game-wise, you probably don't want to preroll it). It's easy to preroll it; I think I know how to set it to be rollable on a click, and may yet do so.
 ```
 @{wtype} &{template:dmg} {{charname=@{charname_output}}} {{rname=Enhancing Surge}} {{damage=1}} {{dmg1flag=1}} {{dmg2flag=1}} {{range=60ft}} {{dmg1=[[1d4+?{Fortifying (1+)|0|1|2|3|4}d6 + [[@{perfected_enhancement_bonus}]][INT/2]]]}} {{dmg1type=Temp HP}} {{dmg2=1d4+?{Savage (1+)|0|1|2|3|4}d6}} {{dmg2type=Bonus Damage}} {{desc=The target gains temp HP and deals bonus damage to one application of their next damage roll.?{Swift (2)|No, |Yes,&#x00A;**Swift (2):** The target gains 30ft of movement speed&period;} ?{Resilient (3)|No, |Yes,&#x00A;**Resilient (3):** The target gains resistance to all damage until the start of your next turn.}}} @{charname_output}
 ```
