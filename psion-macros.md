@@ -1,7 +1,7 @@
 # PSION MACROS
 This is a collection of macros to make it easier to play a Psion using Roll20's 5E OGL character sheet. No API scripts necessary. These rely heavily on Roll20's Roll Query feature, and will throw up prompts to select how you're using  your powers.
 
-This Psion class is by [KibblesTasty](https://www.kthomebrew.com/).
+This Psion class is by [KibblesTasty](https://www.kthomebrew.com/) and is available [here](https://www.gmbinder.com/share/-LZSNMgmChWNGW979hrj).
 
 # USAGE
 1. Grab the ability you want and add it to your character sheet as a custom ability.
