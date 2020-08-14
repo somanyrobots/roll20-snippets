@@ -28,6 +28,14 @@ Make sure you've got `empowered_psionics_bonus` and `psionic_power_save_desc` at
 @{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telekinetic Force}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{save=1}} {{saveattr=Strength}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=?{Zone of (0-3)?|0,Target is|1, All creatures in a **5'** sphere are|2, All creatures in a **10'** sphere are|3, All creatures in a **20'** sphere are} shoved [[5+?{Hurling (1-3)|0|1|2|3}*10]] feet or knocked prone. ?{Crushing (2)|No,|Yes,&#x00A;**Crushing:** The target is restrained until the end of its next turn.}}} @{charname_output}
 ```
 
+## Kinetic Slam
+This is just Telekinetic Force, with the Kinetic Slam talent to turn it into an attack roll instead of a save.
+
+Make sure you've got `empowered_psionics_bonus` and `psionic_power_save_desc` attributes set - see instructions above.
+```
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Kinetic Slam}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{crit=1}} {{crit1=[[[[1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} @{charname_output}
+```
+
 ## Telekinetic Weapons
 Features a built-in option if you've previously activated Psionic Weapons, if you're using them together; you can just delete those four lines if you're not. As with Eldritch Blast, if you're flinging multiple weapons, you're going to want to just hit this button multiple times. It'd be even harder than EB to script up multiple flings, since the damage dice can vary between attacks.
 
