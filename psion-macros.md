@@ -11,7 +11,7 @@ This Psion class is by [KibblesTasty](https://www.kthomebrew.com/).
 * `perfected_enhancement_bonus`: This should be `0`. If you have Perfected Enhancement, instead enter `floor(@{intelligence_mod}/2)`. You only need this one for Enhancing Surge.
 
 # LIMITATIONS
-There's no way to edit attributes without API access, so these abilities won't directly modify any attributes on your character. Also, there's no way to dynamically switch between attack rolls and saving throws, so for powers that do so, you'll need a separate macro for each mode.
+There's no way to edit attributes without API access, so these abilities won't directly modify any attributes on your character. Also, there's no way to dynamically switch between attack rolls and saving throws, so for powers that do so, you'll need a separate macro for each mode. Also, it really sucks that roll20 demands these be one-line snippets; if you edit them, I suggest adding line breaks every 3-4 items.
 
 # SHOW ME THE DANG MACROS ALREADY
 ## Telekinetic Force
