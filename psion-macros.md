@@ -33,7 +33,7 @@ This is just Telekinetic Force, with the Kinetic Slam talent to turn it into an 
 
 Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
-@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Kinetic Slam}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{crit=1}} {{crit1=[[[[1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} @{charname_output}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Kinetic Slam}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{crit=1}} {{crit1=[[[[1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} {{desc=The target is shoved 5 feet or knocked prone.}} @{charname_output}
 ```
 
 ## Telekinetic Weapons
@@ -55,7 +55,7 @@ This is just Telepathic Intrusion, with the Mind Thrust talent to turn it into a
 
 Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
-@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Mind Thrust}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{crit=1}} {{crit1=[[[[1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} @{charname_output}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Mind Thrust}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{crit=1}} {{crit1=[[[[1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} {{desc=The target has disadvantage on attacks against you until the start of your next turn.}} @{charname_output}
 ```
 
 ## Enhancing Surge
