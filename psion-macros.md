@@ -36,14 +36,19 @@ Features a built-in option if you've previously activated Psionic Weapons, if yo
 @{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{save=1}} {{saveattr=Wisdom}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}} @{charname_output}
 ```
 
+## Enhancing Surge
+```
+@{wtype} &{template:dmg} {{charname=@{charname_output}}} {{rname=Enhancing Surge}} {{damage=1}} {{dmg1flag=1}} {{dmg2flag=1}} {{range=60ft}} {{dmg1=[[1d4+?{Fortifying (1+)|0|1|2|3|4}d6 + [[@{perfected_enhancement_bonus}]][INT/2]]]}} {{dmg1type=Temp HP}} {{dmg2=1d4+?{Savage (1+)|0|1|2|3|4}d6}} {{dmg2type=Bonus Damage}} {{desc=The target gains temp HP and deals bonus damage to one application of their next damage roll.?{Swift (2)|No, |Yes,&#x00A;**Swift (2):** The target gains 30ft of movement speed&period;} ?{Resilient (3)|No, |Yes,&#x00A;**Resilient (3):** The target gains resistance to all damage until the start of your next turn.}}} @{charname_output}
+```
+
 ## Psionic Weapons
 I mostly use it through the built-in option on TK Weapons, but this will quickly roll damage for you as needed.
 ```
-&{template:dmg} {{charname=@{charname_output}}} {{rname=Psionic Weapon}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(ceil((@{level} + 2) / 6))]]d6]]}} {{dmg1type=Psychic}} @{charname_output}
+@{wtype} &{template:dmg} {{charname=@{charname_output}}} {{rname=Psionic Weapon}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(ceil((@{level} + 2) / 6))]]d6]]}} {{dmg1type=Psychic}} @{charname_output}
 ```
 
 ## Rampage (with no die management)
 Just rolls your rampage damage, it's up to you to track the die.
 ```
-&{template:dmg} {{charname=@{charname_output}}} {{damage=1}} {{dmg1flag=1}} {{rname=Rampage (?{Rampage Die|d4|d6|d8|d10|d12})}} {{dmg1=[[1?{Rampage Die|d4|d6|d8|d10|d12}]]}} @{charname_output}
+@{wtype} &{template:dmg} {{charname=@{charname_output}}} {{damage=1}} {{dmg1flag=1}} {{rname=Rampage (?{Rampage Die|d4|d6|d8|d10|d12})}} {{dmg1=[[1?{Rampage Die|d4|d6|d8|d10|d12}]]}} @{charname_output}
 ```
