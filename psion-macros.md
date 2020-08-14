@@ -41,7 +41,7 @@ Features a built-in option if you've previously activated Psionic Weapons, if yo
 
 Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
-@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telekinetic Weapon}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=@{spell_attack_bonus}}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1flag=1}} {{dmg1=[[?{Damage Dice} + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=?{Damage Type|Slashing|Piercing|Bludgeoning}}} {{crit=1}} {{crit1=[[?{Damage Dice}[CRIT]]]}} ?{Psionic Weapon|No, |Yes, {{dmg2flag=1&#125;&#125; {{dmg2=[[[[(ceil((@{level} + 2) / 6))]]d6]]&#125;&#125; {{dmg2type=Psionic Weapon&#125;&#125; {{crit2=1&#125;&#125; {{crit2=[[[[(ceil((@{level} + 2) / 6))]]d6[CRIT]]]&#125;&#125; } @{charname_output}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telekinetic Weapon}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=@{spell_attack_bonus}}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1flag=1}} {{dmg1=[[?{Weapon Damage} + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=?{Damage Type|Slashing|Piercing|Bludgeoning}}} {{crit=1}} {{crit1=[[?{Weapon Damage}[CRIT]]]}} ?{Psionic Weapon|No, |Yes, {{dmg2flag=1&#125;&#125; {{dmg2=[[[[(ceil((@{level} + 2) / 6))]]d6]]&#125;&#125; {{dmg2type=Psionic Weapon&#125;&#125; {{crit2=1&#125;&#125; {{crit2=[[[[(ceil((@{level} + 2) / 6))]]d6[CRIT]]]&#125;&#125; } @{charname_output}
 ```
 
 ## Telepathic Intrusion
