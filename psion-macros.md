@@ -14,6 +14,8 @@ This Psion class is by [KibblesTasty](https://www.kthomebrew.com/) and is availa
 There's no way to edit attributes without API access, so these abilities won't directly modify any attributes on your character. Also, there's no way to dynamically switch between attack rolls and saving throws, so for powers that do so, you'll need a separate macro for each mode. Also, it really sucks that roll20 demands these be one-line snippets; if you edit them, I suggest adding line breaks every 3-4 items.
 
 # SHOW ME THE DANG MACROS ALREADY
+These all use the OGL sheet's default roll templates, to try and keep as consistent an appearance as possible.
+
 ## Telekinetic Force
 ```
 @{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telekinetic Force}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{save=1}} {{saveattr=Strength}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=?{Zone of (0-3)?|0,Target is|1, All creatures in a **5'** sphere are|2, All creatures in a **10'** sphere are|3, All creatures in a **20'** sphere are} shoved [[5+?{Hurling (1-3)|0|1|2|3}*10]] feet or knocked prone. ?{Crushing (2)|No,|Yes,&#x00A;**Crushing:** The target is restrained until the end of its next turn.}}} @{charname_output}
