@@ -14,7 +14,7 @@ This Psion class is by [KibblesTasty](https://www.kthomebrew.com/) and is availa
 * There's no way to edit attributes without API access, so these abilities won't directly modify any attributes on your character.
 * There's no way to dynamically switch between attack rolls and saving throws, so for powers that do so, you'll need a separate macro for each mode.
 * It really sucks that roll20 demands these be one-line snippets; if you edit them, I suggest adding line breaks every 3-4 items.
-* I haven't found any way to include one's Psi Limit as part of the macros. So right now I've just got the roll queries set to match my own 8th-level PC - ideally, on all the 1+ queries, we'd cap them at the psi limit. I'll probably change the defaults to scale 0-10, to accomodate 20th-level psions, since it doesn't actually hurt a lower-level PC much.
+* I haven't found any way to include one's Psi Limit as part of the macros. So right now I've just got the roll queries for a 20th-level PC - ideally, on all the 1+ queries, we'd cap them at the psi limit. Ideally they'd be capped at the maximum allowable for any level.
 * It's probably impossible to teach roll20 to actually enforce a psi limit within a turn, or even within a macro (it could be maybe done with API access, but I'm trying not to require that). This isn't that hard for people to track themselves, and teaching roll20 how to sum different values across the roll queries will be a giant pain, if it's possible at all.
 
 # SHOW ME THE DANG MACROS ALREADY
@@ -22,7 +22,7 @@ These all use the OGL sheet's default roll templates, to try and keep as consist
 
 ## Telekinetic Force
 ```
-@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telekinetic Force}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{save=1}} {{saveattr=Strength}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=?{Zone of (0-3)?|0,Target is|1, All creatures in a **5'** sphere are|2, All creatures in a **10'** sphere are|3, All creatures in a **20'** sphere are} shoved [[5+?{Hurling (1-3)|0|1|2|3}*10]] feet or knocked prone. ?{Crushing (2)|No,|Yes,&#x00A;**Crushing:** The target is restrained until the end of its next turn.}}} @{charname_output}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telekinetic Force}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{save=1}} {{saveattr=Strength}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=?{Zone of (0-3)?|0,Target is|1, All creatures in a **5'** sphere are|2, All creatures in a **10'** sphere are|3, All creatures in a **20'** sphere are} shoved [[5+?{Hurling (1-3)|0|1|2|3}*10]] feet or knocked prone. ?{Crushing (2)|No,|Yes,&#x00A;**Crushing:** The target is restrained until the end of its next turn.}}} @{charname_output}
 ```
 
 ## Telekinetic Weapons
@@ -33,7 +33,12 @@ Features a built-in option if you've previously activated Psionic Weapons, if yo
 
 ## Telepathic Intrusion
 ```
-@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4})]]d8 + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{save=1}} {{saveattr=Wisdom}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}} @{charname_output}
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Telepathic Intrusion}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{save=1}} {{saveattr=Wisdom}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=The target has disadvantage on attacks against you until the start of your next turn. ?{Terrifying (1)|No, |Yes,&#x00A;**Terrifying (1):** The target is frightened until the end of its next turn&period;} ?{Overwhelming (2)|No, |Yes,&#x00A;**Overwhelming (2):** The target is *staggered* until the end of its next turn&period; A staggered creature's movement speed is halved&comma; it cannot take reactions&comma; and it has disadvantage on Dexterity saving throws and Constitution saving throws to maintain concentration on a spell.} ?{Reading (2)|No, |Yes,&#x00A;**Reading (2):** The target's next attack against you before the start of your next turn has disadvantage.}}} @{charname_output}
+```
+
+## Enhancing Surge
+```
+@{wtype} &{template:dmg} {{charname=@{charname_output}}} {{rname=Enhancing Surge}} {{damage=1}} {{dmg1flag=1}} {{dmg2flag=1}} {{range=60ft}} {{dmg1=[[1d4+?{Fortifying (1+)|0|1|2|3|4|5|6||7|8|9|10}d6 + [[@{perfected_enhancement_bonus}]][INT/2]]]}} {{dmg1type=Temp HP}} {{dmg2=1d4+?{Savage (1+)|0|1|2|3|4|5|6|7|8|9|10}d6}} {{dmg2type=Bonus Damage}} {{desc=The target gains temp HP and deals bonus damage to one application of their next damage roll.?{Swift (2)|No, |Yes,&#x00A;**Swift (2):** The target gains 30ft of movement speed&period;} ?{Resilient (3)|No, |Yes,&#x00A;**Resilient (3):** The target gains resistance to all damage until the start of your next turn.}}} @{charname_output}
 ```
 
 ## Enhancing Surge
