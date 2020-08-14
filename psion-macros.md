@@ -48,6 +48,15 @@ If you use Echoing, you should just roll this macro twice.
 @{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Phase Rift}} {{damage=1}} {{dmg1flag=1}} {{range=?{Long (1-3)|0, 10ft|1, **20ft**|2, **30ft**|3, **40ft**}}} {{dmg1=[[[[(1+?{Disruptive (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Force}} {{save=1}} {{saveattr=Dexterity}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=You step through space, making a rift and inflicting damage on any creature in your path. ?{Blurring (1)|No, |Yes,&#x00A;**Blurring (1):** You are heavily obscured until the start of your next turn&period;} ?{Ethereal (2)|No, |Yes,&#x00A;**Ethereal (2):** You can pass through solid objects&comma; buildings&comma; and terrain&period; If you would end inside a space you cannot occupy&comma; the power fails.} }} @{charname_output}
 ```
 
+## Astral Construct Attack
+This is just a quick macro for making an attack with your astral construct - it's actually one of the simplest,
+being basically just a spiritual weapon macro. If you had ChatSetAttr installed, you could create a pretty fancy macro to put on an astral construct token to do things like auto-Solidify.
+
+Make sure you've got `astral_construct_die` and `empowered_construct_bonus` attributes set - see instructions above.
+```
+@{wtype} &{template:atkdmg} {{charname=@{charname_output}}} {{rname=Astral Construct Attack}} {{damage=1}} {{attack=1}} {{always=1}} {{range=60ft}} {{mod=@{spell_attack_bonus}}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1flag=1}} {{dmg1=[[?{Grow (1)|No, 1|Yes, 2}@{astral_construct_die} +  @{empowered_construct_bonus}[INT]]] }} {{dmg1type=Force}} {{crit=1}} {{crit1=[[?{Grow (1)|No, 1|Yes, 2}@{astral_construct_die}[CRIT]]]}}  } @{charname_output}
+```
+
 ## Psionic Weapons
 I mostly use it through the built-in option on TK Weapons, but this will quickly roll damage for you as needed.
 ```
