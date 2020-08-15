@@ -33,7 +33,7 @@ This is just Telekinetic Force, with the Kinetic Slam talent to turn it into an 
 
 Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
-@{wtype} &{template:atkdmg} {{rname=Kinetic Slam}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{crit=1}} {{crit1=[[[[1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} {{desc=The target is shoved 5 feet or knocked prone.}} @{charname_output}
+@{wtype} &{template:atkdmg} {{rname=Kinetic Slam}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=+@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Bludgeoning}} {{crit=1}} {{crit1=[[[[1+?{Hammering (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} {{desc=The target is shoved 5 feet or knocked prone.}} @{charname_output}
 ```
 
 ## Telekinetic Weapons
@@ -41,7 +41,7 @@ Features a built-in option if you've previously activated Psionic Weapons, if yo
 
 Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
-@{wtype} &{template:atkdmg} {{rname=Telekinetic Weapon}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=@{spell_attack_bonus}}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1flag=1}} {{dmg1=[[?{Weapon Damage} + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=?{Damage Type|Slashing|Piercing|Bludgeoning}}} {{crit=1}} {{crit1=[[?{Weapon Damage}[CRIT]]]}} ?{Psionic Weapon|No, |Yes, {{dmg2flag=1&#125;&#125; {{dmg2=[[[[(ceil((@{level} + 2) / 6))]]d6]]&#125;&#125; {{dmg2type=Psionic Weapon&#125;&#125; {{crit2=1&#125;&#125; {{crit2=[[[[(ceil((@{level} + 2) / 6))]]d6[CRIT]]]&#125;&#125; } @{charname_output}
+@{wtype} &{template:atkdmg} {{rname=Telekinetic Weapon}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=+@{spell_attack_bonus}}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1flag=1}} {{dmg1=[[?{Weapon Damage} + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=?{Damage Type|Slashing|Piercing|Bludgeoning}}} {{crit=1}} {{crit1=[[?{Weapon Damage}[CRIT]]]}} ?{Psionic Weapon|No, |Yes, {{dmg2flag=1&#125;&#125; {{dmg2=[[[[(ceil((@{level} + 2) / 6))]]d6]]&#125;&#125; {{dmg2type=Psionic Weapon&#125;&#125; {{crit2=1&#125;&#125; {{crit2=[[[[(ceil((@{level} + 2) / 6))]]d6[CRIT]]]&#125;&#125; } @{charname_output}
 ```
 
 ## Telepathic Intrusion
@@ -55,7 +55,7 @@ This is just Telepathic Intrusion, with the Mind Thrust talent to turn it into a
 
 Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
-@{wtype} &{template:atkdmg} {{rname=Mind Thrust}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{crit=1}} {{crit1=[[[[1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} {{desc=The target has disadvantage on attacks against you until the start of your next turn.}} @{charname_output}
+@{wtype} &{template:atkdmg} {{rname=Mind Thrust}} {{damage=1}} {{attack=1}} {{always=1}} {{mod=+@{spell_attack_bonus}}} {{dmg1flag=1}} {{range=60ft}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1=[[[[(1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10  + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Psychic}} {{crit=1}} {{crit1=[[[[1+?{Rending (1+)|0|1|2|3|4|5|6|7|8|9|10}]]d10[CRIT]]]}} {{desc=The target has disadvantage on attacks against you until the start of your next turn.}} @{charname_output}
 ```
 
 ## Enhancing Surge
@@ -80,7 +80,7 @@ being basically just a spiritual weapon macro. If you had ChatSetAttr installed,
 
 Make sure you've got `astral_construct_die` and `empowered_construct_bonus` attributes set - see instructions above.
 ```
-@{wtype} &{template:atkdmg} {{rname=Astral Construct Attack}} {{damage=1}} {{attack=1}} {{always=1}} {{range=60ft}} {{mod=@{spell_attack_bonus}}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1flag=1}} {{dmg1=[[?{Grow (1)|No, 1|Yes, 2}@{astral_construct_die} +  @{empowered_construct_bonus}[INT]]] }} {{dmg1type=Force}} {{crit=1}} {{crit1=[[?{Grow (1)|No, 1|Yes, 2}@{astral_construct_die}[CRIT]]]}}  } @{charname_output}
+@{wtype} &{template:atkdmg} {{rname=Astral Construct Attack}} {{damage=1}} {{attack=1}} {{always=1}} {{range=60ft}} {{mod=+@{spell_attack_bonus}}} {{r1=[[1d20+@{spell_attack_bonus}]]}} {{r2=[[1d20+@{spell_attack_bonus}]]}} {{dmg1flag=1}} {{dmg1=[[?{Grow (1)|No, 1|Yes, 2}@{astral_construct_die} +  @{empowered_construct_bonus}[INT]]] }} {{dmg1type=Force}} {{crit=1}} {{crit1=[[?{Grow (1)|No, 1|Yes, 2}@{astral_construct_die}[CRIT]]]}}  } @{charname_output}
 ```
 
 ## Psionic Weapons
@@ -112,7 +112,7 @@ Make sure you've got the `empowered_psionics_bonus` attribute set - see instruct
 
 ## Cryokinetic Blast - Targeted
 ```
-@{wtype}&{template:atkdmg} {{rname=Cryokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Cold}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8[CRIT]]]}} {{desc=The target is slowed [[5+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10}*5]] feet, and must make a Constitution save or be restrained until the end of their next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or be restrained until the end of their next turn.}}} @{charname_output}
+@{wtype}&{template:atkdmg} {{rname=Cryokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=+[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Cold}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8[CRIT]]]}} {{desc=The target is slowed [[5+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10}*5]] feet, and must make a Constitution save or be restrained until the end of their next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or be restrained until the end of their next turn.}}} @{charname_output}
 ```
 
 ## Cryokinetic Blast - Massive
@@ -122,7 +122,7 @@ Make sure you've got the `empowered_psionics_bonus` attribute set - see instruct
 
 ## Electrokinetic Blast - Targeted
 ```
-@{wtype}&{template:atkdmg} {{rname=Electrokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Lightning}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10[CRIT]]]}} {{dmg2flag=2}} {{dmg2type=Arcing}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=An arc of lightning strikes another creature of your choice within 20 ft of the target for additional damage.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or be restrained until the end of their next turn.}}} @{charname_output}
+@{wtype}&{template:atkdmg} {{rname=Electrokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=+[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Lightning}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10[CRIT]]]}} {{dmg2flag=2}} {{dmg2type=Arcing}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=An arc of lightning strikes another creature of your choice within 20 ft of the target for additional damage.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or be restrained until the end of their next turn.}}} @{charname_output}
 ```
 
 ## Electrokinetic Blast - Massive
@@ -132,7 +132,7 @@ Make sure you've got the `empowered_psionics_bonus` attribute set - see instruct
 
 ## Pyrokinetic Blast - Targeted
 ```
-@{wtype}&{template:atkdmg} {{rname=Pyrokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Fire}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10[CRIT]]]}} {{dmg2flag=2}} {{dmg2type=Burn}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=The target takes additional fire damage at the start of its next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or suffer burn damage as if caught in the initial blast.}}} @{charname_output}
+@{wtype}&{template:atkdmg} {{rname=Pyrokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=+[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Fire}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10[CRIT]]]}} {{dmg2flag=2}} {{dmg2type=Burn}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=The target takes additional fire damage at the start of its next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or suffer burn damage as if caught in the initial blast.}}} @{charname_output}
 ```
 
 ## Pyrokinetic Blast - Massive
