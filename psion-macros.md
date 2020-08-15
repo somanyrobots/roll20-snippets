@@ -68,6 +68,8 @@ Make sure you've got the `perfected_enhancement_bonus` attribute set - see instr
 
 ## Phase Rift
 If you use Echoing, you should just roll this macro twice.
+
+Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
 ```
 @{wtype} &{template:atkdmg} {{rname=Phase Rift}} {{damage=1}} {{dmg1flag=1}} {{range=?{Long (1-3)|0, 10ft|1, **20ft**|2, **30ft**|3, **40ft**}}} {{dmg1=[[[[(1+?{Disruptive (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT]]]}} {{dmg1type=Force}} {{save=1}} {{saveattr=Dexterity}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[(@{spell_save_dc})]][SAVE]]]}} {{desc=You step through space, making a rift and inflicting damage on any creature in your path. ?{Blurring (1)|No, |Yes,&#x00A;**Blurring (1):** You are heavily obscured until the start of your next turn&period;} ?{Ethereal (2)|No, |Yes,&#x00A;**Ethereal (2):** You can pass through solid objects&comma; buildings&comma; and terrain&period; If you would end inside a space you cannot occupy&comma; the power fails.} }} @{charname_output}
 ```
@@ -87,8 +89,53 @@ I mostly use it through the built-in option on TK Weapons, but this will quickly
 @{wtype} &{template:dmg} {{rname=Psionic Weapon}} {{damage=1}} {{dmg1flag=1}} {{range=60ft}} {{dmg1=[[[[(ceil((@{level} + 2) / 6))]]d6]]}} {{dmg1type=Psychic}} @{charname_output}
 ```
 
-## Rampage (with no die management)
+## Rampage
 Just rolls your rampage damage, it's up to you to track the die.
 ```
 @{wtype} &{template:dmg} {{damage=1}} {{dmg1flag=1}} {{rname=Rampage (?{Rampage Die|d4|d6|d8|d10|d12})}} {{dmg1=[[1?{Rampage Die|d4|d6|d8|d10|d12}]]}} @{charname_output}
+```
+
+## Elemental Blast
+I haven't found any reasonable way (without API scripts) to combine these all into a single ability. It ought to be possible with a nested ability and some basic roll queries, but the nested ability syntax is barely functional. You could do it with a chat menu, but then other players get spammed with it while you use it. For most Psions, it'll be adequate to copy two of these onto their sheet and be done with it.
+
+Make sure you've got the `empowered_psionics_bonus` attribute set - see instructions above.
+
+## Unspecialized Elemental Blast - Targeted
+```
+@{wtype}&{template:atkdmg} {{rname=Elemental Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=+[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20cs>1+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=?{Damage Type|Cold|Lightning|Fire|Force}}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8[CRIT]]]}} {{desc=For each die of cold damage dealt, the creature's movement speed is reduced by 5 feet until the end of their next turn. For each die of fire damage dealt by the original attack, the creature takes 1d4 fire damage at the start of its next turn. For each die of lightning damage dealt, an arc of lightning strikes another creature of your choice within 20 feet, dealing 1d4 lightning damage.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution save or suffer the secondary effects of the blast as if they had been hit.}}} @{charname_output}
+```
+
+## Unspecialized Elemental Blast - Massive
+```
+@{wtype}&{template:atkdmg} {{rname=Elemental Blast}} {{damage=1}} {{save=1}} {{saveattr=Dexterity}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[@{spell_save_dc}-?{Overcharged|No,0|Yes,@{pb}}]][SAVE]]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=?{Damage Type|Cold|Lightning|Fire|Force}}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8[CRIT]]]}} {{desc=**Massive (?{Massive|1|2|3}):** Targets all creatures within a **[[15*2**[[(?{Massive|1|2|3})-1]]]] ft cone.** For each die of cold damage dealt, the creature's movement speed is reduced by 5 feet until the end of their next turn. For each die of fire damage dealt by the original attack, the creature takes 1d4 fire damage at the start of its next turn. For each die of lightning damage dealt, an arc of lightning strikes another creature of your choice within 20 feet, dealing 1d4 lightning damage.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution save or suffer the secondary effects of the blast as if they had been hit.}}} @{charname_output}
+```
+
+## Cryokinetic Blast - Targeted
+```
+@{wtype}&{template:atkdmg} {{rname=Cryokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20cs>1+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Cold}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8[CRIT]]]}} {{desc=The target is slowed [[5+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10}*5]] feet, and must make a Constitution save or be restrained until the end of their next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or be restrained until the end of their next turn.}}} @{charname_output}
+```
+
+## Cryokinetic Blast - Massive
+```
+@{wtype}&{template:atkdmg} {{rname=Cryokinetic Blast}} {{damage=1}} {{save=1}} {{saveattr=Dexterity}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[@{spell_save_dc}-?{Overcharged|No,0|Yes,@{pb}}]][SAVE]]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d8 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Cold}} {{desc=**Massive (?{Massive|1|2|3}):** Targets all creatures within a **[[15*2**[[(?{Massive|1|2|3})-1]]]] ft cone.** The target is slowed [[5+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10}*5]] feet, and must make a Constitution save or be restrained until the end of their next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or be restrained until the end of their next turn.}} @{charname_output}
+```
+
+## Electrokinetic Blast - Targeted
+```
+@{wtype}&{template:atkdmg} {{rname=Electrokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20cs>1+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Lightning}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10[CRIT]]]}} {{dmg2flag=2}} {{dmg2type=Arcing}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=An arc of lightning strikes another creature of your choice within 20 ft of the target for additional damage.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or be restrained until the end of their next turn.}}} @{charname_output}
+```
+
+## Electrokinetic Blast - Massive
+```
+@{wtype}&{template:atkdmg} {{rname=Electrokinetic Blast}} {{damage=1}} {{save=1}} {{saveattr=Dexterity}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[@{spell_save_dc}-?{Overcharged|No,0|Yes,@{pb}}]][SAVE]]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Lightning}} {{dmg2flag=2}} {{dmg2type=Arcing}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=**Massive (?{Massive|1|2|3}):** Targets all creatures within a **[[15*2**[[(?{Massive|1|2|3})-1]]]] ft cone.** For each target, an arc of lightning strikes another creature of your choice within 20 ft of the target for additional damage.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or take arc damage as if caught in the initial blast.}}} @{charname_output}
+```
+
+## Pyrokinetic Blast - Targeted
+```
+@{wtype}&{template:atkdmg} {{rname=Pyrokinetic Blast}} {{damage=1}} {{attack=1}} {{always=1}} {{range=30ft}} {{mod=[[@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r1=[[1d20cs>1+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{r2=[[1d20+@{spell_attack_bonus}-?{Overcharged|No,0|Yes,@{pb}}]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Fire}} {{crit=1}} {{crit1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10[CRIT]]]}} {{dmg2flag=2}} {{dmg2type=Burn}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=The target takes additional fire damage at the start of its next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or suffer burn damage as if caught in the initial blast.}}} @{charname_output}
+```
+
+## Pyrokinetic Blast - Massive
+```
+@{wtype}&{template:atkdmg} {{rname=Pyrokinetic Blast}} {{damage=1}} {{save=1}} {{saveattr=Dexterity}} {{savedesc=@{psionic_power_save_desc}}} {{savedc=[[[[@{spell_save_dc}-?{Overcharged|No,0|Yes,@{pb}}]][SAVE]]]}} {{dmg1flag=1}} {{dmg1=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d10 + @{empowered_psionics_bonus}[INT] + [[2*?{Overcharged|No,0|Yes,@{pb}}]][Overcharge]]]}} {{dmg1type=Lightning}} {{dmg2flag=2}} {{dmg2type=Arcing}} {{dmg2=[[[[(1+?{Amplified (1+)|0|1|2|3|4|5|6|7|8|9|10})]]d6]]}} {{desc=**Massive (?{Massive|1|2|3}):** Targets all creatures within a **[[15*2**[[(?{Massive|1|2|3})-1]]]] ft cone.** Each target takes additional fire damage at the start of its next turn.?{Lasting (1)|No, |Yes,&#x00A;**Lasting (1):** Your blast leaves a 5 foot sphere of devastation at the target point. Any creatures that enter this zone or end their turn there must make a Constitution saving throw or suffer burn damage as if caught in the initial blast.}}} @{charname_output}
 ```
