@@ -9,7 +9,7 @@ This Psion class is by [KibblesTasty](https://www.kthomebrew.com/) and is availa
 * `psionic_power_save_desc`: This should be `No damage or effects.` If you have the Potent Psionics talent, instead enter `Half damage and no effects.` You'll need this for any ability with a saving throw (though the math will still work fine - it's just for descriptions).
 * `empowered_psionics_bonus`: This should be `0`. If you have the Empowered Psionics feature, instead enter `@{intelligence_mod}`. You'll need this one for most abilities.
 * `perfected_enhancement_bonus`: This should be `0`. If you have the Perfected Enhancement feature, instead enter `floor(@{intelligence_mod}/2)`.
-* `astral_construct_die`: This should be 'd8'. If you have the Devastating Weapon feature (part of the Shaper subclass), instead enter `d12`.
+* `astral_construct_die`: This should be `d8`. If you have the Devastating Weapon feature (part of the Shaper subclass), instead enter `d12`.
 * `empowered_construct_bonus`: This should be `0`. If you have the Empowered Construct feature, instead enter `@{intelligence_mod}`.
 
 # LIMITATIONS
